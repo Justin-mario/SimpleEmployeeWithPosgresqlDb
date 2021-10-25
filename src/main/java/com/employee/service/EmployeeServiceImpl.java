@@ -3,7 +3,6 @@ package com.employee.service;
 import com.employee.data.model.Employee;
 import com.employee.data.repository.EmployeeRepository;
 import com.employee.exception.EmployeeNotFoundException;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +10,11 @@ import java.util.List;
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
 
-    @Autowired
+
     EmployeeRepository employeeRepository;
+    public EmployeeServiceImpl(EmployeeRepository employeeRepository){
+        this.employeeRepository = employeeRepository;
+    }
     @Override
     public void saveEmployee(Employee newEmployee) {
         employeeRepository.save ( newEmployee );
